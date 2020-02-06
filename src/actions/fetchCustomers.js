@@ -28,8 +28,5 @@ var customers = [
     }
 ]
 
-export const fetchCustomers = () => {
-    return { type: FETCH_CUSTOMERS, payload: null }
-};
 
-// export const fetchCustomers = async () => createAction(FETCH_CUSTOMERS)
+export const fetchCustomers = createAction(FETCH_CUSTOMERS, () => customers);
