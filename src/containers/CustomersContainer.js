@@ -1,67 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import AppFrame from '../components/AppFrame';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CustomersList from '../components/CustomersList';
-import CustomersActions from '../components/CustomersActions';
-import { connect } from "react-redux"
-import { fetchCustomers } from '../actions/fetchCustomers';
 import { withRouter } from 'react-router-dom';
-import { getCustomers } from "../selectors/customers"
+import { connect } from 'react-redux';
+import AppFrame from './../components/AppFrame';
+import CustomersList from './../components/CustomersList';
+import CustomersActions from './../components/CustomersActions';
+import { fetchCustomers } from './../actions/fetchCustomers';
+import { getCustomers } from './../selectors/customers';
 
-const CustomersContainer = ({ history, location, customers, fetchCustomers }) => {
-    debugger
+class CustomersContainer extends Component {
 
-    const handleAddNew = () => {
-        console.log("CustomerContainer Click nuevo cliente");
-        history.push("/customers/new")
-
+    componentDidMount() {
+        if (this.props.customers.length === 0) {
+            this.props.fetchCustomers();
+        }
     }
 
-    // Similar to componentDidMount and componentDidUpdate:
-    useEffect(() => {
-        // Update the document title using the browser API
-        console.log("CustomersContiner: fetchCustomers");
-        const fetch = async () => {
-            fetchCustomers()
-        }
+    handleAddNew = () => {
+        this.props.history.push('/customers/new');
+    }
 
-        fetch()
-
-    }, []);
-
-    const renderBody = _customers => (
+    renderBody = customers => (
         <div>
             <CustomersList
-                customers={_customers}
-                urlPath={"custommer/"}
-            ></CustomersList>
+                customers={customers}
+                urlPath={'customers/'} >
+            </CustomersList>
             <CustomersActions>
-                <button onClick={handleAddNew}>Nuevo Cliente</button>
+                <button onClick={this.handleAddNew}>Nuevo Cliente</button>
             </CustomersActions>
-        </div >
+        </div>
     )
 
-
-
-    return (
-        <div>
-            <AppFrame
-                header={"Listado de clientes"}
-                body={
-                    customers ? renderBody() : <h1>No Customers</h1>
-                }
-            ></AppFrame>
-        </div>
-    );
-};
+    render() {
+        debugger
+        return (
+            <div>
+                <AppFrame header={'Listado de clientes'}
+                    body={this.renderBody(this.props.customers)}></AppFrame>
+            </div>
+        );
+    }
+}
 
 CustomersContainer.propTypes = {
     fetchCustomers: PropTypes.func.isRequired,
+    customers: PropTypes.array.isRequired,
 };
 
-// CustomersContainer.defaultProps = {
-//     customers: []
-// };
+CustomersContainer.defaultProps = {
+    customers: []
+};
 
 const mapStateToProps = state => ({
     customers: getCustomers(state)
