@@ -9,8 +9,6 @@ import { withRouter } from 'react-router-dom';
 import { getCustomers } from "../selectors/customers"
 
 const CustomersContainer = ({ history, location, customers, fetchCustomers }) => {
-    debugger
-
     const handleAddNew = () => {
         console.log("CustomerContainer Click nuevo cliente");
         history.push("/customers/new")
@@ -48,7 +46,7 @@ const CustomersContainer = ({ history, location, customers, fetchCustomers }) =>
             <AppFrame
                 header={"Listado de clientes"}
                 body={
-                    customers ? renderBody() : <h1>No Customers</h1>
+                    customers ? renderBody(customers) : <h1>No Customers</h1>
                 }
             ></AppFrame>
         </div>
@@ -59,9 +57,9 @@ CustomersContainer.propTypes = {
     fetchCustomers: PropTypes.func.isRequired,
 };
 
-// CustomersContainer.defaultProps = {
-//     customers: []
-// };
+CustomersContainer.defaultProps = {
+    customers: []
+};
 
 const mapStateToProps = state => ({
     customers: getCustomers(state)
