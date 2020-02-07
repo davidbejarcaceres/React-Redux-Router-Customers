@@ -7,6 +7,7 @@ import { connect } from "react-redux"
 import { fetchCustomers } from '../actions/fetchCustomers';
 import { withRouter } from 'react-router-dom';
 import { getCustomers } from "../selectors/customers"
+import { CircularProgress } from "@material-ui/core"
 
 const CustomersContainer = ({ history, location, customers, fetchCustomers }) => {
     const handleAddNew = () => {
@@ -46,7 +47,12 @@ const CustomersContainer = ({ history, location, customers, fetchCustomers }) =>
             <AppFrame
                 header={"Listado de clientes"}
                 body={
-                    customers ? renderBody(customers) : <h1>No Customers</h1>
+                    (customers.length > 0) ? renderBody(customers) :
+                        <div>
+                            <h1>Downloading Customers</h1>
+                            <CircularProgress />
+
+                        </div>
                 }
             ></AppFrame>
         </div>

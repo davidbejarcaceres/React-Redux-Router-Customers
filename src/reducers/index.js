@@ -5,5 +5,5 @@ import { CUSTOMER_VIEW, CUSTOMER_LIST, CUSTOMER_EDIT } from './../constants/perm
 
 
 export default combineReducers({
-    customers,
+    customers
 });

@@ -2,7 +2,7 @@ import { handleActions } from "redux-actions"
 import { FETCH_CUSTOMERS, DELETE_CUSTOMER, INSERT_CUSTOMER, UPDATE_CUSTOMER } from "../constants"
 
 export const customers = handleActions({
-    [FETCH_CUSTOMERS]: (state, action) => [...action.payload],
+    ["SAGAS_FETCH_CUSTOMERS_ASYNC"]: (state, action) => [...action.payload],
     [INSERT_CUSTOMER]: (state, action) => [...state, action.payload],
     [UPDATE_CUSTOMER]: (state, action) => {
         const customerPayload = action.payload;
