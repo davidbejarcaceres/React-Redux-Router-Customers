@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import HomeContainer from "./containers/HomeContainer"
 import CustomersContainer from './containers/CustomersContainer';
+import CustomerContainer from './containers/CustomerContainer';
 
 function App() {
 
@@ -22,10 +23,10 @@ function App() {
         <Route exact path="/customers" component={CustomersContainer}></Route>
         <Switch>
           <Route exact path="/customers/new" component={renderCustomerNewContainer}></Route>
-          <Route exact path="/customers/:dni" component={renderCustomerContainer}></Route>
+          <Route exact path="/customers/:dni" render={props => <CustomerContainer dni={props.match.params.dni} />} />
         </Switch>
       </div>
-    </Router>
+    </Router >
 
   );
 }

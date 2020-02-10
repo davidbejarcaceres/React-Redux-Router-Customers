@@ -32,7 +32,7 @@ const CustomersContainer = ({ history, location, customers, fetchCustomers }) =>
         <div>
             <CustomersList
                 customers={_customers}
-                urlPath={"custommer/"}
+                urlPath={"customers/"}
             ></CustomersList>
             <CustomersActions>
                 <button onClick={handleAddNew}>Nuevo Cliente</button>
