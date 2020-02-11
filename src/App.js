@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/customers" component={CustomersContainer}></Route>
         <Switch>
           <Route exact path="/customers/new" component={renderCustomerNewContainer}></Route>
-          <Route exact path="/customers/:dni" render={props => <CustomerContainer dni={props.match.params.dni} />} />
+          <Route path="/customers/:dni" render={props => <CustomerContainer dni={props.match.params.dni} />} />
         </Switch>
       </div>
     </Router >
