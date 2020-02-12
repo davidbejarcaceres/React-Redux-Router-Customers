@@ -10,15 +10,12 @@ import CustomerEdit from "../components/CustomerEdit"
 {/* <p>Datos de cliente {props.customer.name}</p> */ }
 
 const CustomerContainer = props => {
-    debugger
-
-    // const pathEdit = `customers/${props.customer.dni}/customers`
-
     const renderBody = () => (
         <Route path="/customers/:dni/edit" children={
-            ({ match }) => (
-                match ? <CustomerEdit {...props.customer} /> : <CustomerData {...props.customer} />
-            )
+            ({ match }) => {
+                const ComponentController = match ? CustomerEdit : CustomerData
+                return <ComponentController initialValues={props.customer} />
+            }
         } ></Route >
     )
 
@@ -34,6 +31,7 @@ const CustomerContainer = props => {
 CustomerContainer.propTypes = {
     dni: PropTypes.string.isRequired,
     customer: PropTypes.object.isRequired,
+    age: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = (state, props) => ({
