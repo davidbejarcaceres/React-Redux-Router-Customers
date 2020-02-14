@@ -10,7 +10,7 @@ function sleep(ms) {
 }
 
 async function downloadCustomers() {
-    await sleep(2000)
+    await sleep(1000)
     return await apiGet(urlCustomers)
 }
 

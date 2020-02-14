@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 const CustomerData = ({ name, dni, age }) => {
     return (
@@ -9,7 +10,6 @@ const CustomerData = ({ name, dni, age }) => {
                 <div><strong>Name: </strong> <i>{name}</i></div>
                 <div><strong>DNI: </strong> <i>{dni}</i></div>
                 <div><strong>Age</strong> <i>{age}</i></div>
-
             </div>
         </div>
     )
