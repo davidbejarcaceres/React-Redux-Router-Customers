@@ -43,7 +43,7 @@ const validate = values => {
 
 
 
-const CustomerEdit = ({ name, dni, age, handleSubmit, submitting }) => {
+const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack }) => {
     return (
         <div>
             <h1>Edición del cliente</h1>
@@ -56,6 +56,10 @@ const CustomerEdit = ({ name, dni, age, handleSubmit, submitting }) => {
                     <Button type="submit" disabled={submitting} variant="contained" color="primary">
                         Submit
                     </Button>
+
+                    <Button type="submit" onClick={onBack} variant="contained" color="primary">
+                        Cancelar
+                    </Button>
                 </CustomersActions>
 
             </form>
@@ -67,7 +71,8 @@ const CustomerEdit = ({ name, dni, age, handleSubmit, submitting }) => {
 CustomerEdit.propTypes = {
     name: PropTypes.string.isRequired,
     dni: PropTypes.string.isRequired,
-    age: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    onBack: PropTypes.func.isRequired,
 }
 
 const CustomerEditForm = reduxForm(
