@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,  lazy, Suspense } from 'react';
 import AppFrame from '../components/AppFrame';
 import PropTypes from 'prop-types';
 import CustomersList from '../components/CustomersList';
@@ -10,6 +10,9 @@ import { getCustomers } from "../selectors/customers"
 import { CircularProgress } from "@material-ui/core"
 
 const CustomersContainer = ({ history, location, customers, fetchCustomers }) => {
+
+    const CustomersListLazy = lazy(() => import('../components/CustomersList'));
+
     const handleAddNew = () => {
         console.log("CustomerContainer Click nuevo cliente");
         history.push("/customers/new")
@@ -30,10 +33,11 @@ const CustomersContainer = ({ history, location, customers, fetchCustomers }) =>
 
     const renderBody = _customers => (
         <div>
-            <CustomersList
+            <Suspense fallback={<div>Loading...</div>}>
+                <CustomersListLazy
                 customers={_customers}
-                urlPath={"customers/"}
-            ></CustomersList>
+                urlPath={"customers/"}/>
+            </Suspense>
             <CustomersActions>
                 <button onClick={handleAddNew}>Nuevo Cliente</button>
             </CustomersActions>
