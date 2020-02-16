@@ -9,6 +9,7 @@ import CustomerEdit from "../components/CustomerEdit"
 import { fetchCustomers } from './../actions/fetchCustomers';
 import { CircularProgress } from '@material-ui/core'
 import { updateCustomer } from '../actions/updateCustomer'
+import { deleteCustomer } from '../actions/deleteCustomer'
 
 
 const CustomerContainer = props => {
@@ -33,22 +34,45 @@ const CustomerContainer = props => {
         props.history.goBack()
     }
 
+    const handleOnDelete = async (customerID) => {
+        console.log("Handle on delete user:" + customerID);     
+        await props.deleteCustomer(customerID)
+        props.history.goBack()
+    }
 
-    const renderBody = () => (
+
+    const renderCustomerControl = (isEdit, isDelete) => (
         <Route path="/customers/:dni/edit" children={
             ({ match }) => {
                 if (props.customer) {
-                    const ComponentController = match ? CustomerEdit : CustomerData
+                    const ComponentController = isEdit ? CustomerEdit : CustomerData
                     return <ComponentController
                             {...props.customer}
                             onSubmit={handleSubmit}
                             onSubmitSuccess={handleSubmitSuccess}
-                            onBack={handleOnBack} />
+                            onBack={handleOnBack}
+                            isDeleteAllowed={!!isDelete}
+                            onDelete={handleOnDelete}/>
                 } else {
                     return <CircularProgress />
                 }
             }
         } ></Route >
+    )
+
+    const  renderBody =  () => (
+        <Route path="/customers/:dni/edit" children={
+            ({ match: isEdit }) => {
+                return <Route path="/customers/:dni/del" children={
+                    ({match: isDelete}) =>{
+                        return renderCustomerControl(isEdit, isDelete)
+                    }
+                }
+                ></Route>
+            }
+        }>
+
+        </Route>
     )
 
     return (
@@ -75,4 +99,4 @@ const mapDispatchToProps = dispatch => ({
     updateCustomer: () => dispatch(updateCustomer())
 })
 
-export default withRouter(connect(mapStateToProps, { fetchCustomers, updateCustomer })(CustomerContainer))
+export default withRouter(connect(mapStateToProps, { fetchCustomers, updateCustomer, deleteCustomer })(CustomerContainer))

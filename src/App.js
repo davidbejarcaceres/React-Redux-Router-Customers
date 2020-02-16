@@ -9,10 +9,6 @@ import "./App.css";
 function App() {
   const HomeContainerLazy = lazy(() => import("./containers/HomeContainer"));
 
-  const renderCustomerContainer = () => <h1>Customer Container</h1>;
-
-  const renderCustomerListContainer = () => <h1>Customers List Container</h1>;
-
   const CustomersContainerLazy = lazy(() =>
     import("./containers/CustomersContainer")
   );

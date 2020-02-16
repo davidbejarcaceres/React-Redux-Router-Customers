@@ -45,8 +45,10 @@ const validate = values => {
 const toNumber = (valor) => valor && Number(valor);
 const toUpper = valor => valor && valor.toUpperCase();
 const toLower = valor => valor && valor.toLowerCase();
-const onlyGrow = (value, previousValue, values) => 
-    value && previousValue && (value  > previousValue ? value : previousValue)
+// const onlyGrow = (value, previousValue, values) => 
+//     value && (!previousValue && value) && (value  > previousValue ? value : previousValue)
+
+const onlyGrow = (value, previousValue, values) => value
 
 
 const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack, pristine, SubmitSucceeded }) => {

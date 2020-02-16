@@ -19,22 +19,24 @@ export function apiPut(url, id, obj) {
         });
 }
 
-
-
-export const apiPost = (url, obj) => () =>
-    fetch(`${url}`, {
+export function apiPost(url, customer) {
+    fetch(url, {
         method: 'POST',
-        body: JSON.stringify(obj),
+        body: JSON.stringify(customer),
         headers: new Headers({ 'Content-type': 'application/json' })
-    }).then(v => v.json())
-        .then(r => {
-            if (r.error) {
-                return Promise.reject(r.validation);
+    }).
+        then(response => response.json())
+        .then(dataJson => {
+            console.log("Data: ");
+            console.log(dataJson);
+            if (dataJson.error) {
+                console.log(dataJson.error);
             }
-            return r;
-        });
+        })
+}
 
-export const apiDelete = (url, id) => () =>
+export function apiDelete(url, id) {
+    debugger
     fetch(`${url}/${id}`, {
         method: 'DELETE',
         headers: new Headers({ 'Content-type': 'application/json' })
@@ -44,4 +46,6 @@ export const apiDelete = (url, id) => () =>
                 return Promise.reject(r.validation);
             }
             return id;
-        });    
+        }); 
+}
+       

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import CustomersActions from './CustomersActions'
 import { Button } from '@material-ui/core'
 
-const CustomerData = ({ name, dni, age, onBack }) => {
+const CustomerData = ({id, name, dni, age, onBack, isDeleteAllowed, onDelete }) => {
     return (
         <div>
             <div className="customer-data">
@@ -18,6 +18,12 @@ const CustomerData = ({ name, dni, age, onBack }) => {
                 <Button type="submit" onClick={onBack} variant="contained" color="secundary">
                     Volver
                 </Button>
+
+                { isDeleteAllowed &&
+                    <Button type="submit" onClick={ () => onDelete(id)} variant="contained" color="secundary">
+                        Delete
+                    </Button> 
+                }
             </CustomersActions>
         </div>
     )
@@ -28,6 +34,8 @@ CustomerData.propTypes = {
     dni: PropTypes.string.isRequired,
     age: PropTypes.number,
     onBack: PropTypes.func.isRequired,
+    isDeleteAllowed: PropTypes.bool,
+    onDelete: PropTypes.func
 }
 
 export default CustomerData
