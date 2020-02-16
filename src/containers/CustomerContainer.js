@@ -19,7 +19,7 @@ const CustomerContainer = props => {
             props.fetchCustomers()
         }
         (!props.customer) && getCustomers()
-    }, [])
+    })
 
     const handleSubmit = async (values) => {
         console.log(JSON.stringify(values));
@@ -92,11 +92,6 @@ CustomerContainer.propTypes = {
 
 const mapStateToProps = (state, props) => ({
     customer: getCustomerByDni(state, props)
-})
-
-const mapDispatchToProps = dispatch => ({
-    fetchCustomers: () => dispatch(fetchCustomers()),
-    updateCustomer: () => dispatch(updateCustomer())
 })
 
 export default withRouter(connect(mapStateToProps, { fetchCustomers, updateCustomer, deleteCustomer })(CustomerContainer))

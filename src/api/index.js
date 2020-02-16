@@ -24,8 +24,8 @@ export function apiPost(url, customer) {
         method: 'POST',
         body: JSON.stringify(customer),
         headers: new Headers({ 'Content-type': 'application/json' })
-    }).
-        then(response => response.json())
+    })
+    .then(response => response.json())
         .then(dataJson => {
             console.log("Data: ");
             console.log(dataJson);

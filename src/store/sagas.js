@@ -1,7 +1,4 @@
-import { call, put, takeEvery, takeLatest, delay } from 'redux-saga/effects'
-import { fetchCustomers } from '../actions/fetchCustomers';
-import { FETCH_CUSTOMERS } from '../constants';
-import { createAction } from 'redux-actions';
+import {  put, takeEvery} from 'redux-saga/effects'
 import { apiGet, apiPut, apiPost, apiDelete } from "../api/index"
 import { urlCustomers } from "../api/urls"
 
