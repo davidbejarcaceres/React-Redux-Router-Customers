@@ -20,6 +20,10 @@ function App() {
     import("./containers/CustomerContainer")
   );
 
+  const NewCustomerContainerLazy = lazy(() =>
+  import("./containers/NewCustomerContainer")
+);
+
   const renderCustomerNewContainer = () => <h1>Customer new Container</h1>;
 
   return (
@@ -39,7 +43,7 @@ function App() {
           <Route
             exact
             path="/customers/new"
-            component={renderCustomerNewContainer}
+            component={WaitingComponent(NewCustomerContainerLazy)}
           ></Route>
           <Route
             path="/customers/:dni"

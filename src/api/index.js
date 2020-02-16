@@ -6,7 +6,6 @@ export const apiGet = (url) => fetch(url).then(response => {
 
 
 export function apiPut(url, id, obj) {
-    debugger
     fetch(`${url}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(obj),

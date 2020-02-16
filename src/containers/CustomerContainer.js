@@ -11,9 +11,6 @@ import { CircularProgress } from '@material-ui/core'
 import { updateCustomer } from '../actions/updateCustomer'
 
 
-
-{/* <p>Datos de cliente {props.customer.name}</p> */ }
-
 const CustomerContainer = props => {
     useEffect(() => {
         const getCustomers = async () => {
@@ -23,12 +20,16 @@ const CustomerContainer = props => {
         (!props.customer) && getCustomers()
     }, [])
 
-    const handleSubmit = values => {
+    const handleSubmit = async (values) => {
         console.log(JSON.stringify(values));
-        props.updateCustomer(values)
+        return await props.updateCustomer(values)
     }
 
     const handleOnBack = () => {
+        props.history.goBack()
+    }
+
+    const handleSubmitSuccess = () => {
         props.history.goBack()
     }
 
@@ -38,7 +39,11 @@ const CustomerContainer = props => {
             ({ match }) => {
                 if (props.customer) {
                     const ComponentController = match ? CustomerEdit : CustomerData
-                    return <ComponentController {...props.customer} onSubmit={handleSubmit} onBack={handleOnBack} />
+                    return <ComponentController
+                            {...props.customer}
+                            onSubmit={handleSubmit}
+                            onSubmitSuccess={handleSubmitSuccess}
+                            onBack={handleOnBack} />
                 } else {
                     return <CircularProgress />
                 }

@@ -36,7 +36,6 @@ function* getUsers(action) {
 }
 
 function* updateUser(action) {
-    debugger
     try {
         const { id } = action.payload
         const usuarioActualizado = yield updateCustomer(id, action.payload)
