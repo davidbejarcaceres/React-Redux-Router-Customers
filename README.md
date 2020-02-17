@@ -6,6 +6,7 @@
 4. [React-forms](https://reactjs.org/docs/forms.html): submit, fetch, normalize, parse, validate.
 5. React [Hooks](https://reactjs.org/docs/hooks-intro.html).
 6. [Lazy loading](https://reactjs.org/docs/code-splitting.html) components for better performance, improved from 76 % to 97 % on [Lighthouse Audit](https://developers.google.com/web/tools/lighthouse)
+7. React [Routing](https://reacttraining.com/react-router/web/guides/quick-start) with react-router-dom, conditional routing and child routing.
 
 ## Screenshots:
 
