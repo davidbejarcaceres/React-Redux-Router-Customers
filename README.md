@@ -16,8 +16,8 @@
 
     Forms:
 <div class="img-container" style="text-align: center; display: block; max-width: 100%;">
-    <img alt="tablet_landscape" src="screenshots/form.png" height="400" />
-    <img alt="tablet_portrait" src="screenshots/componentData.png" height="400" />
+    <img alt="tablet_landscape" src="screenshots/form.png" width="45%" />
+    <img alt="tablet_portrait" src="screenshots/componentData.png" width="45%" />
 </div>
 
 
