@@ -1,3 +1,32 @@
+# Weather App built with React using Hooks and Redux
+
+1. React-[Redux](https://redux.js.org/api/store/) implementation.
+2. [Redux-Sagas](https://redux-saga.js.org/) for async redux actions.
+3. Async [fetch API](https://developers.google.com/web/updates/2015/03/introduction-to-fetch) client implementation.
+4. [React-forms](https://reactjs.org/docs/forms.html): submit, fetch, normalize, parse, validate.
+5. React [Hooks](https://reactjs.org/docs/hooks-intro.html).
+6. [Lazy loading](https://reactjs.org/docs/code-splitting.html) components for better performance, improved from 76 % to 97 % on [Lighthouse Audit](https://developers.google.com/web/tools/lighthouse)
+
+## Screenshots:
+
+    Lazy loading performance audit:
+<div class="img-container" style="text-align: center; display: block; max-width: 100%;">
+    <img alt="audit" src="screenshots/audit.png" height="400"/>
+</div>
+
+    Forms:
+<div class="img-container" style="text-align: center; display: block; max-width: 100%;">
+    <img alt="tablet_landscape" src="screenshots/form.png" height="400" />
+    <img alt="tablet_portrait" src="screenshots/componentData.png" height="400" />
+</div>
+
+
+
+&nbsp;
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
