@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { setPropsAsInitial } from "../helpers/setPropsAsInivial";
 import CustomersActions from './CustomersActions';
 import { Prompt } from 'react-router-dom';
+import { accessControl } from '../helpers/accessControl';
+import { CUSTOMER_EDIT } from '../constants/permissions';
 
 
 
@@ -53,7 +55,7 @@ const onlyGrow = (value, previousValue, values) => value
 
 const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack, pristine, SubmitSucceeded }) => {
     console.log("Submitting = " + submitting);
-    
+
     return (
         <div>
             <h1>Edición del cliente</h1>
@@ -73,8 +75,8 @@ const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack, pristi
                 </CustomersActions>
 
                 <Prompt
-                when={!pristine && !SubmitSucceeded}
-                message={"Se perederán los datos si continúa."}
+                    when={!pristine && !SubmitSucceeded}
+                    message={"Se perederán los datos si continúa."}
                 ></Prompt>
 
             </form>
@@ -97,4 +99,4 @@ const CustomerEditForm = reduxForm(
         validate
     })(CustomerEdit);
 
-export default setPropsAsInitial(CustomerEditForm)
+export default accessControl([CUSTOMER_EDIT])(setPropsAsInitial(CustomerEditForm))

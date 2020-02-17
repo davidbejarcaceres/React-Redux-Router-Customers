@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import CustomersActions from './CustomersActions'
 import { Button } from '@material-ui/core'
+import { accessControl } from '../helpers/accessControl';
+import { CUSTOMER_VIEW } from '../constants/permissions';
 
-const CustomerData = ({id, name, dni, age, onBack, isDeleteAllowed, onDelete }) => {
+const CustomerData = ({ id, name, dni, age, onBack, isDeleteAllowed, onDelete }) => {
     return (
         <div>
             <div className="customer-data">
@@ -19,10 +21,10 @@ const CustomerData = ({id, name, dni, age, onBack, isDeleteAllowed, onDelete }) 
                     Volver
                 </Button>
 
-                { isDeleteAllowed &&
-                    <Button type="submit" onClick={ () => onDelete(id)} variant="contained" color="secundary">
+                {isDeleteAllowed &&
+                    <Button type="submit" onClick={() => onDelete(id)} variant="contained" color="secundary">
                         Delete
-                    </Button> 
+                    </Button>
                 }
             </CustomersActions>
         </div>
@@ -38,4 +40,4 @@ CustomerData.propTypes = {
     onDelete: PropTypes.func
 }
 
-export default CustomerData
+export default accessControl([CUSTOMER_VIEW])(CustomerData)

@@ -1,4 +1,4 @@
-import {  put, takeEvery} from 'redux-saga/effects'
+import { put, takeEvery } from 'redux-saga/effects'
 import { apiGet, apiPut, apiPost, apiDelete } from "../api/index"
 import { urlCustomers } from "../api/urls"
 
@@ -56,7 +56,7 @@ function* updateUser(action) {
 }
 
 function* insertUser(action) {
-    try {        
+    try {
         const usuarioActualizado = yield insertCustomer(action.payload)
         yield put({ type: "SAGAS_INSERT_CUSTOMER_ASYNC", payload: usuarioActualizado })
     } catch (e) {
@@ -65,7 +65,7 @@ function* insertUser(action) {
 }
 
 function* deleteUser(action) {
-    try {        
+    try {
         const id = action.payload
         const deletedUser = yield deleteCustomer(id)
         yield put({ type: "SAGAS_INSERT_CUSTOMER_ASYNC", payload: deletedUser })
