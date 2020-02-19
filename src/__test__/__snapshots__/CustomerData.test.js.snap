@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="customer-data"
+    >
+      <h2>
+         Datos del cliente
+      </h2>
+      <div>
+        <strong>
+          Name: 
+        </strong>
+         
+        <i>
+          30000001
+        </i>
+      </div>
+      <div>
+        <strong>
+          DNI: 
+        </strong>
+         
+        <i>
+          FACUNDO 2
+        </i>
+      </div>
+      <div>
+        <strong>
+          Age
+        </strong>
+         
+        <i>
+          30
+        </i>
+      </div>
+    </div>
+    <div>
+      <div
+        class="customers-actions"
+      >
+        <div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+            data-testid="btn-submit"
+            tabindex="0"
+            type="submit"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Volver
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+            tabindex="0"
+            type="submit"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Delete
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
